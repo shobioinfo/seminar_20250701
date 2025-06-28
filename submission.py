@@ -48,7 +48,7 @@ for fn in files:
     path = os.path.join(UPLOAD_DIR, fn)
     try:
         df_pred = pd.read_csv(path)
-        acc = (df_pred["pred"] == ground_truth["pred"]).mean()
+        acc = (df_pred["pred"] == ground_truth["Rating"]).mean()
         leaderboard.append({"ファイル名": fn, "Accuracy": acc})
     except Exception as e:
         # CSV 形式やカラムがおかしい場合は飛ばすorエラー表示
