@@ -28,7 +28,7 @@ st.markdown("""
 - ファイル名は predict_group(?).csv (? は班名) としてください。  
   - A班の場合: predict_groupA.csv  
   - オンラインの方々は、predict_group_氏名.csv  
-- 予測結果は pred 列に格納してください。
+- 予測結果は Rating 列に格納してください。
 """)
 
 # ─── ファイルアップローダー ───
@@ -48,7 +48,7 @@ for fn in files:
     path = os.path.join(UPLOAD_DIR, fn)
     try:
         df_pred = pd.read_csv(path)
-        acc = (df_pred["pred"] == ground_truth["Rating"]).mean()
+        acc = (df_pred["Rating"] == ground_truth["Rating"]).mean()
         leaderboard.append({"ファイル名": fn, "Accuracy": acc})
     except Exception as e:
         # CSV 形式やカラムがおかしい場合は飛ばすorエラー表示
